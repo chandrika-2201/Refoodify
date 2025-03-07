@@ -1,0 +1,308 @@
+/* Volunteer Dashboard Styles */
+:root {
+    --primary-color: #4CAF50;
+    --secondary-color: #FFA000;
+    --text-color: #333;
+    --background-color: #f4f4f4;
+    --card-background: #fff;
+    --input-background: #fff;
+    --input-text: #333;
+}
+
+.dark-mode {
+    --primary-color: #66BB6A;
+    --secondary-color: #FFB300;
+    --text-color: #f4f4f4;
+    --background-color: #121212;
+    --card-background: #1E1E1E;
+    --input-background: #333;
+    --input-text: #f4f4f4;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: 'Roboto', sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#available-tasks, #my-tasks, #organize-camp, #profile, #gamification {
+    background-color: var(--card-background);
+    padding: 2rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease, background-color 0.3s;
+}
+
+#available-tasks:hover, #my-tasks:hover, #organize-camp:hover, #profile:hover, #gamification:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+#task-list, #my-task-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.task-item {
+    background-color: var(--background-color);
+    padding: 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid var(--primary-color);
+}
+
+#camp-form, .profile-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.profile-avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+footer{
+    font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #available-tasks, #my-tasks, #organize-camp, #profile, #gamification {
+        padding: 1rem;
+    }
+
+    #task-list, #my-task-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Hover effects and transitions */
+.cta-button {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.cta-button:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+.task-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Task completed button */
+.task-completed {
+    background-color: #e0e0e0;
+    color: #333;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.task-completed.completed {
+    background-color: #4CAF50;
+    color: white;
+    animation: taskComplete 0.5s ease;
+}
+
+/* Add these styles for better theme integration */
+#theme-toggle {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+#theme-toggle:hover {
+    color: var(--primary-color);
+}
+
+/* Ensure text readability in both themes */
+#available-tasks h2, #my-tasks h2, #organize-camp h2, #profile h2, #gamification h2 {
+    color: var(--primary-color);
+}
+
+.task-item h3, .camp-proposal-item p {
+    color: var(--text-color);
+}
+
+/* Adjust form placeholder color for better visibility in dark mode */
+#camp-form input::placeholder,
+#camp-form textarea::placeholder {
+    color: var(--text-color);
+    opacity: 0.7;
+}
+
+/* Add these styles */
+#gamification {
+    background-color: var(--card-background);
+    padding: 2rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+}
+
+#volunteer-stats {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1rem;
+}
+
+#progress-bar {
+    height: 10px;
+    background-color: rgba(76, 175, 80, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#progress {
+    height: 100%;
+    background-color: var(--primary-color);
+    background-image: linear-gradient(45deg, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+    background-size: 1rem 1rem;
+    animation: progress-bar-stripes 1s linear infinite;
+    width: 0;
+    transition: width 0.5s ease-in-out;
+}
+
+#volunteer-badges {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.badge {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: var(--secondary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.complete-task {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.complete-task:hover {
+    background-color: var(--secondary-color);
+}
+
+/* Camp Proposal Styles */
+#camp-proposals-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.camp-proposal-item {
+    background-color: var(--card-background);
+    padding: 1rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease, background-color 0.3s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.camp-proposal-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.camp-proposal-item h4 {
+    margin-top: 0;
+    color: var(--primary-color);
+}
+
+/* Form styles */
+#camp-form input,
+#camp-form textarea {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--text-color);
+    border-radius: 4px;
+    background-color: var(--input-background);
+    color: var(--input-text);
+    transition: border-color 0.3s, box-shadow 0.3s, background-color 0.3s, color 0.3s;
+}
+
+#camp-form textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+/* Hover effect for form inputs */
+#camp-form input:hover,
+#camp-form textarea:hover,
+#camp-form input:focus,
+#camp-form textarea:focus {
+    border-color: var(--primary-color);
+}
+
+#camp-form input:focus,
+#camp-form textarea:focus {
+    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.25);
+}
+
+/* Add a subtle animation for task completion */
+@keyframes taskComplete {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+h2 i, h3 i {
+    margin-right: 10px;
+    color: var(--primary-color);
+}
+
+.profile-info i {
+    margin-right: 5px;
+    color: var(--primary-color);
+}
+
+.cta-button i {
+    margin-right: 5px;
+}
+
+#camp-form input,
+#camp-form textarea {
+    padding-left: 30px;
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    background-size: 16px;
+}
+
+#camp-form input[name="campName"] {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="%234CAF50" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8L334.6 349c-3.9 5.3-11.4 6.5-16.8 2.6z"/></svg>');
+}
+
+#camp-form input[name="campDate"] {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="%234CAF50" d="M400 64h-48V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H160V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H48C21.5 64 0 85.5 0 112v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48zm-6 400H54c-3.3 0-6-2.7-6-6V160h352v298c0 3.3-2.7 6-6 6z"/></svg>');
+}
+
+#camp-form input[name="location"] {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="%234CAF50" d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z"/></svg>');
+}
+
+#camp-form textarea[name="description"] {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="%234CAF50" d="M448 0H64C28.7 0 0 28.7 0 64v288c0 35.3 28.7 64 64 64h96v84c0 9.8 11.2 15.5 19.1 9.7L304 416h144c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64z"/></svg>');
+}

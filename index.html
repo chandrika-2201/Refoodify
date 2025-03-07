@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReFoodify - Turn Leftovers into Lasting Change</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+</head>
+<body class="light-mode">
+    <header>
+        <nav class="navbar">
+            <a href="#" class="logo">ReFoodify</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#why-refoodify">Why ReFoodify</a></li>
+                <li><a href="#community">Community</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contact-us">Contact Us</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+            <button id="theme-toggle" aria-label="Toggle theme">
+                <i class="fas fa-moon"></i>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>Turn Leftovers into Lasting Change</h1>
+                <p>Join the movement to rescue food, reduce waste, and feed communities.</p>
+                <div class="cta-buttons">
+                    <a href="#join-us" class="cta-button primary">Start Saving Food Today</a>
+                    <a href="#how-it-works" class="cta-button secondary">Learn More</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="food-rescue.png" alt="Food rescue in action">
+            </div>
+        </section>
+
+        <section id="how-it-works">
+            <h2>How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-icon">🥕</div>
+                    <h3>Step 1: Rescue</h3>
+                    <p>We partner with local restaurants, grocery stores, and farms to rescue surplus food.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">🌍</div>
+                    <h3>Step 2: ReFoodify</h3>
+                    <p>Become a part of the solution by donating or volunteering to make a tangible difference.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">🚚</div>
+                    <h3>Step 3: Redistribute</h3>
+                    <p>Our community of volunteers delivers this food to shelters and food banks.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="impact" class="impact-section">
+            <h2>Together, We're Making an Impact</h2>
+            <div class="impact-stats">
+                <div class="stat">
+                    <h3><span class="counter" data-target="5000000">0</span> lbs</h3>
+                    <p>Food Rescued</p>
+                </div>
+                <div class="stat">
+                    <h3><span class="counter" data-target="10000">0</span> Meals</h3>
+                    <p>Served to those in need</p>
+                </div>
+                <div class="stat">
+                    <h3><span class="counter" data-target="200">0</span> Volunteers</h3>
+                    <p>Nationwide</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="why-refoodify">
+            <h2>Real Stories. Real Impact.</h2>
+            <div class="testimonials">
+                <blockquote>
+                    <p>"ReFoodify helped our shelter feed 50 families last month!"</p>
+                    <footer>- Community Shelter Partner</footer>
+                </blockquote>
+                <blockquote>
+                    <p>"I volunteer weekly, and it's the best part of my week. Knowing I'm making a difference is powerful."</p>
+                    <footer>- Volunteer</footer>
+                </blockquote>
+                <blockquote>
+                    <p>"We've reduced waste and helped the planet. ReFoodify is a game-changer!"</p>
+                    <footer>- Local Farmer</footer>
+                </blockquote>
+            </div>
+        </section>
+
+        
+
+        <section id="community">
+            <h2>Join Our Community</h2>
+            <div class="community-grid">
+                <div class="community-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Local Chapters</h3>
+                    <p>Connect with ReFoodify volunteers in your area.</p>
+                    <a href="#" class="btn-link">Find a Chapter</a>
+                </div>
+                <div class="community-card">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>Events</h3>
+                    <p>Participate in food rescue events and workshops.</p>
+                    <a href="#" class="btn-link">View Calendar</a>
+                </div>
+                <div class="community-card">
+                    <i class="fas fa-comments"></i>
+                    <h3>Discussion Forum</h3>
+                    <p>Share ideas and experiences with other food rescuers.</p>
+                    <a href="#" class="btn-link">Join the Conversation</a>
+                </div>
+                <div class="community-card">
+                    <i class="fas fa-hand-holding-heart"></i>
+                    <h3>Success Stories</h3>
+                    <p>Read inspiring stories from our community members.</p>
+                    <a href="#" class="btn-link">Read Stories</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="blog">
+            <h2>ReFoodify Blog</h2>
+            <div class="blog-grid">
+                <article class="blog-post">
+                    <img src="easyways.jpg" alt="Food waste reduction tips">
+                    <h3>10 Easy Ways to Reduce Food Waste at Home</h3>
+                    <p class="post-meta">By Jane Doe | May 15, 2023</p>
+                    <p>Learn simple strategies to minimize food waste in your daily life...</p>
+                    <a href="#" class="btn-link">Read More</a>
+                </article>
+                <article class="blog-post">
+                    <img src="community.jpg" alt="Community fridge project">
+                    <h3>Community Fridges: A Growing Movement</h3>
+                    <p class="post-meta">By John Smith | May 10, 2023</p>
+                    <p>Explore how community fridges are fighting food insecurity...</p>
+                    <a href="#" class="btn-link">Read More</a>
+                </article>
+                <article class="blog-post">
+                    <img src="compost.jpg" alt="Composting guide">
+                    <h3>Composting 101: Turn Food Scraps into Garden Gold</h3>
+                    <p class="post-meta">By Emily Green | May 5, 2023</p>
+                    <p>A beginner's guide to starting your own compost bin...</p>
+                    <a href="#" class="btn-link">Read More</a>
+                </article>
+            </div>
+            <div class="blog-cta">
+                <a href="#" class="cta-button secondary">View All Posts</a>
+            </div>
+        </section>
+        <section id="join-us"></section>
+            <h2><center>Become a Food Rescuer Today!</center></h2>
+            <form id="join-form">
+                <input type="text" name="name" placeholder="Name" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <select name="role" required>
+                    <option value="" disabled selected>Select your role</option>
+                    <option value="donor">Donor</option>
+                    <option value="volunteer">Volunteer</option>
+                    <option value="partner">Partner</option>
+                </select>
+                <button type="submit" class="cta-button">Join the Movement</button>
+            </form>
+        </section>
+
+
+        <section id="contact-us">
+            
+            
+                    <h3>Get in Touch</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> KL University Bachupally</p>
+                    <p><i class="fas fa-phone"></i> +91 1234567890</p>
+                    <p><i class="fas fa-envelope"></i> info@refoodify.com</p>
+             
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <ul>
+                    <li><a href="#">Our Mission</a></li>
+                    <li><a href="#">Team</a></li>
+                    <li><a href="#">Partners</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="#">Get in Touch</a></li>
+                    <li><a href="#">Support</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Stay Connected</h3>
+                <div class="social-icons">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                </div>
+                <form id="newsletter-form">
+                    <input type="email" name="email" placeholder="Your email" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 ReFoodify. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

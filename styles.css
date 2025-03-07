@@ -1,0 +1,567 @@
+/* Base Styles */
+:root {
+    --primary-color: #4CAF50;
+    --secondary-color: #FFA000;
+    --text-color: #333;
+    --background-color: #f4f4f4;
+    --card-background: #fff;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.dark-mode {
+    --primary-color: #66BB6A;
+    --secondary-color: #FFB300;
+    --text-color: #f4f4f4;
+    --background-color: #121212;
+    --card-background: #1E1E1E;
+}
+
+/* Header Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background-color: var(--card-background);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin-left: 1rem;
+}
+
+.nav-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+#theme-toggle {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4rem 5%;
+    background-color: var(--background-color);
+}
+
+.hero-content {
+    flex: 1;
+    max-width: 50%;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: var(--text-color);
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
+    font-weight: bold;
+}
+
+.cta-button.primary {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.cta-button.secondary {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+}
+
+.hero-image {
+    flex: 1;
+    max-width: 50%;
+}
+
+.hero-image img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Featured Partners Section */
+
+
+    /* How It Works Section */
+#how-it-works {
+    padding: 4rem 5%;
+    background-color: var(--card-background);
+}
+
+.steps {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.step {
+    flex: 1;
+    min-width: 250px;
+    margin: 1rem;
+    padding: 2rem;
+    background-color: var(--background-color);
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.step:hover {
+    transform: translateY(-10px);
+}
+
+.step-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+/* Impact Section */
+.impact-section {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 4rem 5%;
+    text-align: center;
+}
+
+.impact-stats {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.stat {
+    margin: 1rem;
+}
+
+.stat h3 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.counter {
+    font-weight: bold;
+}
+
+/* Testimonials Section */
+#why-refoodify {
+    padding: 4rem 5%;
+    background-color: var(--card-background);
+}
+
+.testimonials {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+blockquote {
+    flex: 1;
+    min-width: 300px;
+    margin: 1rem;
+    padding: 2rem;
+    background-color: var(--background-color);
+    border-radius: 10px;
+    font-style: italic;
+}
+
+blockquote footer {
+    margin-top: 1rem;
+    font-style: normal;
+    font-weight: bold;
+}
+
+/* Join Us Section */
+#join-us {
+    padding: 4rem 5%;
+    background-color: var(--background-color);
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    max-width: 500px;
+    margin: 2rem auto;
+    display: flex;
+    flex-direction: column;
+}
+
+input, select {
+    margin-bottom: 1rem;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Footer Styles */
+footer {
+    background-color: var(--card-background);
+    color: var(--text-color);
+    padding: 2rem 5%;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 200px;
+    margin-bottom: 1rem;
+}
+
+.footer-section h3 {
+    margin-bottom: 1rem;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-section a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.social-icons {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.social-icons a {
+    margin-right: 1rem;
+    color: var(--text-color);
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #ddd;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+    }
+
+    .nav-links {
+        margin-top: 1rem;
+    }
+
+    .steps, .impact-stats, .testimonials {
+        flex-direction: column;
+    }
+
+    .footer-content {
+        flex-direction: column;
+    }
+}
+
+/* Community Section */
+#community {
+    padding: 4rem 5%;
+    background-color: var(--background-color);
+}
+
+.community-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.community-card {
+    background-color: var(--card-background);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.community-card:hover {
+    transform: translateY(-5px);
+}
+
+.community-card i {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.community-card h3 {
+    margin-bottom: 1rem;
+}
+
+.btn-link {
+    display: inline-block;
+    margin-top: 1rem;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Blog Section */
+#blog {
+    padding: 4rem 5%;
+    background-color: var(--card-background);
+}
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.blog-post {
+    background-color: var(--background-color);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s;
+}
+
+.blog-post:hover {
+    transform: translateY(-5px);
+}
+
+.blog-post img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.blog-post h3 {
+    padding: 1rem;
+    margin-bottom: 0;
+}
+
+.post-meta {
+    padding: 0 1rem;
+    font-size: 0.9rem;
+    color: #777;
+}
+
+.blog-post p {
+    padding: 0 1rem 1rem;
+}
+
+.blog-post .btn-link {
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+}
+
+.blog-cta {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .community-grid,
+    .blog-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Login Styles */
+#login {
+    max-width: 320px;
+    margin: 4rem auto;
+    padding: 2rem;
+    background-color: var(--card-background);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+#login h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+    font-size: 24px;
+}
+
+#login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-container {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.input-container i {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--primary-color);
+    font-size: 16px;
+}
+
+.input-container input,
+.input-container select {
+    width: 100%;
+    padding: 10px 10px 10px 35px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.input-container input::placeholder,
+.input-container select {
+    color: #aaa;
+    font-size: 14px;
+}
+
+.input-container input:focus,
+.input-container select:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.1);
+}
+
+.password-container {
+    position: relative;
+}
+
+/* Update the password container styles */
+.password-container {
+    position: relative;
+}
+
+/* Update the password input styles */
+#password {
+    padding-right: 10px; /* Remove extra padding */
+}
+
+
+
+/* Adjust the input container styles to accommodate the toggle button */
+.input-container input,
+.input-container select {
+    width: 100%;
+    padding: 10px 10px 10px 35px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+/* Specific style for the password input */
+.password-container input {
+    padding-right: 10px; /* Remove extra padding */
+}
+
+#login-form button {
+    margin-top: 1rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#login-form button:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+}
+
+#form-message {
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 14px;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 400px) {
+    #login {
+        max-width: 90%;
+        margin: 2rem auto;
+        padding: 1.5rem;
+    }
+
+    #login h2 {
+        font-size: 22px;
+    }
+
+    .input-container input,
+    .input-container select,
+    .input-container input::placeholder,
+    .input-container select {
+        font-size: 14px;
+    }
+
+    #login-form button {
+        font-size: 15px;
+    }
+}

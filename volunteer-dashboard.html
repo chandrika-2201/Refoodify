@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer Dashboard - ReFoodify</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="volunteer-dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/3.0.1/js.cookie.min.js"></script>
+    <style>
+        #greeting {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--text-color);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">ReFoodify</a>
+            <ul class="nav-links">
+                <li><a href="#available-tasks">Available Tasks</a></li>
+                <li><a href="#my-tasks">My Tasks</a></li>
+                <li><a href="#organize-camp">Organize Camp</a></li>
+                <li><a href="#profile">Profile</a></li>
+            </ul>
+            <button id="theme-toggle" aria-label="Toggle theme">
+                <i class="fas fa-moon"></i>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <h1><center id="greeting">Hello, <span id="user-name"></span>!</center></h1>
+        
+        <section id="available-tasks">
+            <h2><i class="fas fa-clipboard-list"></i> Available Tasks</h2>
+            <div id="task-list">
+                <!-- Available tasks will be populated here dynamically -->
+            </div>
+        </section>
+
+        <section id="my-tasks">
+            <h2><i class="fas fa-tasks"></i> My Tasks</h2>
+            <div id="my-task-list">
+                <!-- Volunteer's accepted tasks will be populated here -->
+            </div>
+        </section>
+
+        <section id="organize-camp">
+            <h2><i class="fas fa-campground"></i> Organize a Donation Camp</h2>
+            <form id="camp-form">
+                <input type="text" name="campName" placeholder="Camp Name" required>
+                <input type="date" name="campDate" required>
+                <input type="text" name="location" placeholder="Location" required>
+                <textarea name="description" placeholder="Camp Description"></textarea>
+                <button type="submit" class="cta-button"><i class="fas fa-paper-plane"></i> Submit Camp Proposal</button>
+            </form>
+        </section>
+
+        <section id="profile">
+            <h2><i class="fas fa-user-circle"></i> My Profile</h2>
+            <nav><img align="right" src="john.jpg" alt=""  height="300"></nav>
+            <div class="profile-info">
+                <h3 id="volunteer-name"></h3>
+                <p id="volunteer-email"></p>
+                <p><i class="fas fa-calendar-alt"></i> Joined: <span id="join-date"></span></p>
+                <p><i class="fas fa-check-circle"></i> Tasks Completed: <span id="tasks-completed">0</span></p>
+            </div>
+            <div id="camp-proposals">
+                <h3><i class="fas fa-list-alt"></i> My Camp Proposals</h3>
+                <ul id="camp-proposals-list">
+                    <!-- Camp proposals will be populated here -->
+                </ul>
+            </div>
+            <button class="cta-button"><i class="fas fa-edit"></i> Edit Profile</button>
+        </section>
+
+        <!-- Add this section to the volunteer dashboard -->
+        <section id="gamification">
+            <h2><i class="fas fa-trophy"></i> Your Impact</h2>
+            <div id="volunteer-stats">
+                <div class="stat">
+                    <h3><i class="fas fa-star"></i> Level</h3>
+                    <p id="volunteer-level">1</p>
+                </div>
+                <div class="stat">
+                    <h3><i class="fas fa-coins"></i> Points</h3>
+                    <p id="volunteer-points">0</p>
+                </div>
+                <div class="stat">
+                    <h3><i class="fas fa-medal"></i> Badges</h3>
+                    <div id="volunteer-badges"></div>
+                </div>
+            </div>
+            <div id="progress-bar">
+                <div id="progress"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p><center>&copy; 2024 ReFoodify. All rights reserved.</center></p>
+    </footer>
+
+    <script src="volunteer-dashboard.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const userName = localStorage.getItem('userName') || 'Jane Doe';
+        const userEmail = localStorage.getItem('userEmail') || 'janedoe@example.com';
+        const joinDate = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+        document.getElementById('user-name').textContent = userName;
+        document.getElementById('volunteer-name').textContent = userName;
+        document.getElementById('volunteer-email').textContent = `Email: ${userEmail}`;
+        document.getElementById('join-date').textContent = joinDate;
+
+        // Load and display available tasks
+        loadAvailableTasks();
+
+        // Add event listener for camp proposal form submission
+        document.getElementById('camp-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            submitCampProposal();
+        });
+
+        // Load existing camp proposals
+        loadCampProposals();
+
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+        const icon = themeToggle.querySelector('i');
+
+        // Check for saved theme preference or default to 'light'
+        const currentTheme = Cookies.get('theme') || 'light';
+        body.classList.add(currentTheme + '-mode');
+        updateThemeToggleIcon(currentTheme);
+
+        themeToggle.addEventListener('click', () => {
+            if (body.classList.contains('light-mode')) {
+                body.classList.replace('light-mode', 'dark-mode');
+                Cookies.set('theme', 'dark', { expires: 365 });
+                updateThemeToggleIcon('dark');
+            } else {
+                body.classList.replace('dark-mode', 'light-mode');
+                Cookies.set('theme', 'light', { expires: 365 });
+                updateThemeToggleIcon('light');
+            }
+        });
+
+        function updateThemeToggleIcon(theme) {
+            if (theme === 'dark') {
+                icon.classList.replace('fa-moon', 'fa-sun');
+            } else {
+                icon.classList.replace('fa-sun', 'fa-moon');
+            }
+        }
+    });
+
+    function loadAvailableTasks() {
+        const taskList = document.getElementById('task-list');
+        const availableTasks = JSON.parse(localStorage.getItem('availableTasks')) || [];
+
+        taskList.innerHTML = ''; // Clear existing tasks
+
+        availableTasks.forEach(task => {
+            const taskElement = document.createElement('div');
+            taskElement.className = 'task-item';
+            taskElement.innerHTML = `
+                <h3>${task.foodItem}</h3>
+                <p>Quantity: ${task.quantity}</p>
+                <p>Expiration Date: ${task.expirationDate}</p>
+                <p>Description: ${task.description}</p>
+                <p>Address: ${task.address}</p>
+                <button onclick="acceptTask(${task.id})" class="cta-button">Accept Task</button>
+            `;
+            taskList.appendChild(taskElement);
+        });
+    }
+
+    function acceptTask(taskId) {
+        let availableTasks = JSON.parse(localStorage.getItem('availableTasks')) || [];
+        let myTasks = JSON.parse(localStorage.getItem('myTasks')) || [];
+
+        const taskIndex = availableTasks.findIndex(task => task.id === taskId);
+        if (taskIndex !== -1) {
+            const acceptedTask = availableTasks.splice(taskIndex, 1)[0];
+            acceptedTask.status = 'Accepted';
+            myTasks.push(acceptedTask);
+
+            localStorage.setItem('availableTasks', JSON.stringify(availableTasks));
+            localStorage.setItem('myTasks', JSON.stringify(myTasks));
+
+            loadAvailableTasks();
+            loadMyTasks();
+            updateVolunteerStats();
+        }
+    }
+
+    function loadMyTasks() {
+        const myTaskList = document.getElementById('my-task-list');
+        const myTasks = JSON.parse(localStorage.getItem('myTasks')) || [];
+
+        myTaskList.innerHTML = ''; // Clear existing tasks
+
+        myTasks.forEach(task => {
+            const taskElement = document.createElement('div');
+            taskElement.className = 'task-item';
+            taskElement.innerHTML = `
+                <h3>${task.foodItem}</h3>
+                <p>Quantity: ${task.quantity}</p>
+                <p>Expiration Date: ${task.expirationDate}</p>
+                <p>Description: ${task.description}</p>
+                <p>Address: ${task.address}</p>
+                <p>Status: ${task.status}</p>
+                ${task.status !== 'Completed' ? `<button onclick="completeTask(${task.id})" class="cta-button complete-task">Mark as Completed</button>` : ''}
+            `;
+            myTaskList.appendChild(taskElement);
+        });
+    }
+
+    function completeTask(taskId) {
+        let myTasks = JSON.parse(localStorage.getItem('myTasks')) || [];
+        const taskIndex = myTasks.findIndex(task => task.id === taskId);
+        if (taskIndex !== -1) {
+            myTasks[taskIndex].status = 'Completed';
+            localStorage.setItem('myTasks', JSON.stringify(myTasks));
+            loadMyTasks();
+            updateVolunteerStats();
+        }
+    }
+
+    function updateVolunteerStats() {
+        const myTasks = JSON.parse(localStorage.getItem('myTasks')) || [];
+        const tasksCompleted = myTasks.filter(task => task.status === 'Completed').length;
+        const points = tasksCompleted * 10; // 10 points per completed task
+        const level = Math.floor(points / 100) + 1;
+
+        document.getElementById('tasks-completed').textContent = tasksCompleted;
+        document.getElementById('volunteer-points').textContent = points;
+        document.getElementById('volunteer-level').textContent = level;
+
+        const progress = (points % 100) / 100 * 100;
+        document.getElementById('progress').style.width = `${progress}%`;
+    }
+
+    function submitCampProposal() {
+        const form = document.getElementById('camp-form');
+        const campProposal = {
+            id: Date.now(), // Use timestamp as a simple unique ID
+            name: form.campName.value,
+            date: form.campDate.value,
+            location: form.location.value,
+            description: form.description.value
+        };
+
+        let campProposals = JSON.parse(localStorage.getItem('campProposals')) || [];
+        campProposals.push(campProposal);
+        localStorage.setItem('campProposals', JSON.stringify(campProposals));
+
+        form.reset();
+        loadCampProposals();
+    }
+
+    function loadCampProposals() {
+        const campProposalsList = document.getElementById('camp-proposals-list');
+        const campProposals = JSON.parse(localStorage.getItem('campProposals')) || [];
+
+        campProposalsList.innerHTML = ''; // Clear existing proposals
+
+        campProposals.forEach(proposal => {
+            const proposalElement = document.createElement('li');
+            proposalElement.className = 'camp-proposal-item';
+            proposalElement.innerHTML = `
+                <h4>${proposal.name}</h4>
+                <p>Date: ${proposal.date}</p>
+                <p>Location: ${proposal.location}</p>
+                <p>Description: ${proposal.description}</p>
+            `;
+            campProposalsList.appendChild(proposalElement);
+        });
+    }
+
+    // Load tasks and update stats when the page loads
+    loadMyTasks();
+    updateVolunteerStats();
+
+    // Make these functions global so they can be called from HTML
+    window.acceptTask = acceptTask;
+    window.completeTask = completeTask;
+    </script>
+</body>
+</html>

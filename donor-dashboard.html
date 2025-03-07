@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donor Dashboard - ReFoodify</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="donor-dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+</head>
+<body class="light-mode">
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">ReFoodify</a>
+            <ul class="nav-links">
+                <li><a href="#donate">Donate Food</a></li>
+                <li><a href="#donation-history">Donation History</a></li>
+                <li><a href="#profile">Profile</a></li>
+            </ul>
+            <button id="theme-toggle" aria-label="Toggle theme">
+                <i class="fas fa-moon"></i>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <h1><center id="greeting">Hello, <span id="user-name"></span>!</center></h1>
+        
+        <section id="donate">
+            <h2><i class="fas fa-hand-holding-heart"></i> Donate Food</h2>
+            <form id="donate-form">
+                <input type="text" name="foodItem" placeholder="Food Item" required>
+                <input type="number" name="quantity" placeholder="Quantity" required>
+                <input type="text" name="expirationDate" placeholder="Expiration Date (YYYY-MM-DD)" required>
+                <textarea name="description" placeholder="Additional Description"></textarea>
+                <input type="text" name="address" id="address-input" placeholder="Enter your address" required>
+                <div id="map" style="height: 300px; width: 100%; margin-top: 10px;"></div>
+                <button type="submit" class="cta-button"><i class="fas fa-plus"></i> Submit Donation</button>
+            </form>
+        </section>
+
+        <section id="donation-history">
+            <h2><i class="fas fa-history"></i> Donation History</h2>
+            <div id="history-list">
+                <!-- Donation history will be populated here -->
+            </div>
+        </section>
+
+        <section id="profile">
+            <h2><i class="fas fa-user-circle"></i> My Profile</h2>
+            <div class="profile-info">
+                <h3 id="donor-name"></h3>
+                <p id="donor-email"></p>
+                <p><i class="fas fa-calendar-alt"></i> Joined: <span id="join-date"></span></p>
+                <p><i class="fas fa-gift"></i> Donations Made: <span id="donations-count">0</span></p>
+            </div>
+            <button class="cta-button"><i class="fas fa-edit"></i> Edit Profile</button>
+        </section>
+    </main>
+
+    <footer>
+        <p><center>&copy; 2024 ReFoodify. All rights reserved.</center></p>
+    </footer>
+
+    <script src="donor-dashboard.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const userName = localStorage.getItem('userName') || 'John Doe';
+        const userEmail = localStorage.getItem('userEmail') || 'johndoe@example.com';
+        const joinDate = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+        document.getElementById('user-name').textContent = userName;
+        document.getElementById('donor-name').textContent = userName;
+        document.getElementById('donor-email').textContent = `Email: ${userEmail}`;
+        document.getElementById('join-date').textContent = joinDate;
+    });
+    </script>
+</body>
+</html>
